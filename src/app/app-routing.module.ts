@@ -22,7 +22,7 @@ const routes: Routes = [
         component: ByCapitalComponent
     },
     {
-        path: 'pais/:id',
+        path: 'country/:id',
         component: SeeCountryComponent
     },
     {

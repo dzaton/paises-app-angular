@@ -4,6 +4,7 @@
       name="word"
       class="form-control"
       [(ngModel)]="word"
-      placeholder="Buscar país..."
+      (input) = "pressedKey()"
+      [placeholder]="placeholder"
     />
   </form>

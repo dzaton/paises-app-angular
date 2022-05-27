@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Country } from '../../interfaces/country.interface';
 
 import { CountryService } from '../../services/country.service';
@@ -29,6 +29,12 @@ export class ByCountryComponent {
         this.isError=true
         this.countries = []
       });
+  }
+
+  suggestions(word:string){
+    this.isError=false;
+    //TODO: crear sugerencias
+
   }
 
 }
