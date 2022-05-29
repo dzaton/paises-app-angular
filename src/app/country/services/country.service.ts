@@ -42,10 +42,10 @@ export class CountryService {
   }
 
 
-  getCountryByAlpha(id: string): Observable<Country> {
+  getCountryByAlpha(id: string): Observable<Country[]> {
     const url = `${this.apiUrl}/alpha/${id}`;
 
-    return this.http.get<Country>( url );
+    return this.http.get<Country[]>( url );
 
   }
 }

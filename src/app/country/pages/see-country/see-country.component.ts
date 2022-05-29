@@ -16,22 +16,19 @@ export class SeeCountryComponent implements OnInit {
 
   country!: Country;
 
-  constructor(
+  constructor( 
     private activatedRoute: ActivatedRoute,
     private countryService: CountryService
-    
     ) { }
 
   ngOnInit(): void {
 
     this.activatedRoute.params
       .pipe(
-        //Obtenemos el id mediante desestructuracion de argumentos {id}
-        switchMap( ( {id} ) => this.countryService.getCountryByAlpha(id)),
-        //El tap imprime en consola lo que devuelva el Observable devuelto en el switchMap
-        tap(console.log)
+        switchMap( ({ id }) => this.countryService.getCountryByAlpha( id )  ),
+        tap( console.log )
       )
-      .subscribe(country => this.country = country);
+      .subscribe( country => this.country = country[0] );
 
   }
 
