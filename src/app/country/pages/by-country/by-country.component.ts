@@ -7,13 +7,20 @@ import { CountryService } from '../../services/country.service';
   selector: 'app-by-country',
   templateUrl: './by-country.component.html',
   styles: [
+    `
+      li {
+        cursor: pointer;
+      }
+    `
   ]
 })
 export class ByCountryComponent {
 
   word: string = '';
   isError: boolean = false
-  countries: Country[]=[];
+  countries: Country[] = [];
+
+  suggestedCountries: Country[] = [];
 
   constructor(private countryService: CountryService) { }
 
@@ -33,7 +40,12 @@ export class ByCountryComponent {
 
   suggestions(word:string){
     this.isError=false;
-    //TODO: crear sugerencias
+    
+    this.countryService.searchCountry(word)
+      .subscribe(
+        countries => this.suggestedCountries = countries.splice(0,5),
+        (err) => this.suggestedCountries = []
+        );
 
   }
 

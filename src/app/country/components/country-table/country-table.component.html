@@ -9,12 +9,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let country of countries; let i = index">
+      <tr *ngFor="let country of countries; let i = index" class="animate__animated animate__fadeIn animate__faster">
         <td>{{ i + 1 }}</td>
 
         <td>
           <img
-            [src]="country.flags.png"
+            [src]="country.flags.svg"
             class="small-flag"
             alt="imagen bandera país"
           />

@@ -1,21 +1,20 @@
-<h2>Por País</h2>
-<hr />
 
-<div class="row">
-  <div class="col">
-    <app-country-input 
-      (onEnter)="search($event)"
-      (onDebounce)="suggestions($event)"
-      placeholder="Buscar región..."></app-country-input>
+<div class="animate__animated animate__fadeIn animate__faster">
+  <h2>Por región <small>{{activeRegion | titlecase}}</small></h2>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <button *ngFor="let region of regions"
+              [class]="getCSSClass(region)"
+              (click)="activateRegion(region)">
+        {{region | titlecase}}
+      </button>
+    </div>
   </div>
-</div>
-<hr />
-<div *ngIf="isError" class="alert alert-danger">
-  No se encontro nada referente a {{ word }}
 </div>
 
 <div *ngIf="countries.length > 0" class="row">
   <div class="col">
-    <app-country-table [countries]="countries"></app-country-table>
+      <app-country-table [countries]="countries"></app-country-table>
   </div>
 </div>
